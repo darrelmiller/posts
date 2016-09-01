@@ -1,3 +1,4 @@
+<cut reason="intro post covered this section">
 <style>
     img {
         display: block;
@@ -6,24 +7,29 @@
 </style>
 <link rel="stylesheet" href="markdownstyle.css"/>
 
-# OpenAPI 3.0 - The evolution of a success story
+# Version 3.0 of The OpenAPI Specification - The evolution of a success story
 
-OpenAPI is the new name for what was previously referred to as the [Swagger specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md).  Swagger has been successfully used to design, describe, generate, validate thousands of APIs in companies all around the world. A sure sign of a successful products is that the users want it to do more.  Judging by the Open API github repository, there are many more features users want to see incorporated into the next version of the OpenAPI specification.  Also, experience in creating APIs has identified places where improvements could be made to make it quicker to create, easier to maintain and more expressive to support more common scenarios.
+OpenAPI is the new name for what was previously referred to as the [Swagger specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md). Swagger has been successfully used to design, describe, generate, validate thousands of APIs in companies all around the world. A sure sign of a successful product is that its users want it to do more.  Judging by the OpenAPI github repository, there are many more features users want to see incorporated into the next version of the specification. Also, experience in creating APIs has identified places where improvements could be made to make it quicker to create, easier to maintain and more expressive to support more common scenarios.
 
 ## Moving forward
 Earlier this year, the development of the Swagger specification was moved over to the [Open API Initiative](https://openapis.org/), a new group in the [Linux Foundation](https://www.linuxfoundation.org/). As part of this process, a working group called the Techinical Developer Committee(TDC) was formed. The mandate being to respond to all the user feedback and create an updated [OpenAPI specification](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md), that would build on the success of its predecessor.  With many hours of effort from core members of the group, much feedback from the wider community and a number of extensive proposals from member organizations, there has been significant progress made on addressing the requests of the user base.
 
 ## Herding Cats
 One of the early challenges the group faced was attempting to get a handle on exactly what users were asking for.  Github issues are great for capturing the details a specific problem with a product, but when issues are used for feature requests they can become long and detailed discussions that contains all kinds gems of information in a mountain of words.  Issues created by different users often describe similar features, but from different perspectives and there can be significant overlap.  The first job was to process, filter and organize all the feedback into related groups so that the TDC could discuss the issues, create and review proposals to address the feedback.  
+</cut>
 
-The issues were grouped into large meta issues:
+As promised in the [previous post](https://openapis.org/news/blogs/2016/07/you-can-get-involved-creating-openapi-specification-and-heres-how) that explained the background and organization behind the evolution of the spec.
 
-- Structural improvements
-- Request Parameters
-- Protocol and Payload
-- Documentation
-- Security
-- Path definitions
+The issues have been grouped into six omnibus meta-issues:
+
+# Structural improvements
+# Request Parameters
+# Protocol and Payload
+# Documentation
+# Security
+# Path definitions
+
+Each of these will take at least a blog post to discuss, and we'll tackle them in order. First up…
 
 ## Structural improvements
 The next version of OpenAPI is planned to be a significant change, in semantic versioning terminology, it is a major change.  This is obviously not something you want to do very often with a specification, so when you do, you need to take the opportunity to do whatever structural changes can help to justify the need for the breaking change.
@@ -54,6 +60,8 @@ The updated specification enables users to describe their APIs in a more resourc
 The options for describing examples have been [significantly expanded](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#examples-object).  The previous specification indicated that examples could only be described by a JSON or YAML object.  Now, by using a JSON string, any format of example can be described.  Additionally a `$ref` object can be used to point to external files containing examples.
 The exact method of structuring examples is still in flux and is dependent on whether the proposed `content` object is accepted by the TDC.  The `content` object contains an array of example objects for defining a one or more examples for each media type.
 
+=========== END FIRST POST
+
 ## Request Parameters
 In OpenAPI 2.0, all of the varying pieces of the request message, including URL parameters, headers and body were described as a set of typed parameters. Experience has shown that mapping the description of a HTTP request body into the same set of metadata as query and header parameters presents a number of challenges.  A number of changes have been implemented to attempt to address these challenges.
 
@@ -74,6 +82,8 @@ These changes result in a path item that has this structure:
 ### Cookie Parameter
 Although TDC members unanimously felt that using cookies was not the preferred approach for passing parameters to an API, it was decided that enough users had expressed the wish to be able to describe existing APIs that used cookies, to warrant the inclusion of a new [parameter type](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#fixed-fields-9). 
 
+=========== END SECOND POST
+
 ## Protocol and Payload
 The primary goal of OpenAPI is to describe standard request/response HTTP APIs.  However, the desire to describe distributed APIs goes further than the simple HTTP model.  There have been numerous requests to support the description of other types of APIs such as WebSockets APIs, RPC APIs, Hypermedia APIs and publish/subscribe APIs.  All of these proposals have been discussed by the TDC and where extensions to the specification can be added without adding complexity to existing use cases and without straying too far from core goals of the specification, features have been added.
 
@@ -92,6 +102,8 @@ There has been lots of feedback on providing additional support for some of the 
 ### Alternative Schemas
 With the improved support for non-json media types, the limitations of using only JSON schema to describe payloads is becoming more untenable. TDC is currently exploring options of how to enable describing the schemas of non-json payloads.  If this challenge can be overcome, it may become possible to completely remove the form parameter type, and support protocols like gRPC that use protobuf and protobuf schema.  
 
+=========== END THIRD POST
+
 ## Documentation
 The successful interop of existing tooling based around the previous versions of the OpenAPI specification proves that it was successful in conveying the necessary information to tool builders.  We hope to not only continue that success but with the increased particpation of the members of the TDC and community members, we hope to make the specification even more accessible, clear, precise and unambiguous.
 
@@ -100,6 +112,8 @@ Adding a table of contents to the specification will help provide new readers an
 
 ### Common Mark
 The current specification refers to using Github Markdown for providing rich text descriptions of various API objects.  Unfortunately there is no specification for how exactly Github Markdown works and some of its features only work for content hosted on Github.  In order to enable tooling to be more consistently with their implementation of markdown rendering, the latest OpenAPI specification [has adopted the CommonMark format](https://github.com/OAI/OpenAPI-Specification/pull/720).  It is largely compatible with Github markdown so it should have minimal affect on existing documentation, however, there is a detailed specification that describes exactly how the markdown should behave.  
+
+=========== END FOURTH POST
 
 ## Remaining Items
 There is still a reasonable amount of work still to do before the TDC will be ready declare this version baked.  You don't get very many opportunities to make the significant level of changes that are being made in this release so it is important not to rush out with something that is not ready. 
