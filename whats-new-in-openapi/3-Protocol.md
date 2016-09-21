@@ -5,9 +5,12 @@ The primary goal of OpenAPI is to describe standard request/response HTTP APIs. 
 ### Callbacks
 Webhooks are pattern of using HTTP in an publish/subscribe mode that is becoming extremely popular.  It is simple to use and fits nicely into HTTP architecture.  However, OpenAPI had no way of describing an outbound HTTP request and the expected response.  The new `callback object` makes this possible.  A [callback object](https://github.com/OAI/OpenAPI-Specification/pull/763) can be attached to a subscribe operation to describe an outbound operation that a subscriber should support.
 
+![Callbacks](Callbacks.png)
 
 ### Links
 The OpenAPI github repository has many proposals of how it can better support the description of hypermedia APIs.  The problem is, trying to create a static description of resources in a hypermedia API is somewhat counter to the runtime discovery philosophy of hypermedia APIs.  However, being able to describe the relationships between resources in an API is something that can be partially described statically.  The specification introduces the [links object](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#linksObject) in order to provide a way to describe what new resources can be accessed based on information retreived from an initial resource.  This is not hypermedia in that, the URLs to the new resources are not embedded in the returned payload, but are constructed based on rules defined in Open API specification.  A new expression syntax has been introduced to allow information from a response to be correlated with parameters in the linked operation.
+
+![Links](links.png)
 
 The static description of links between resources should allow the generation of more useful documentation and client libraries that can encapsulate the process of traversing from one resource to another.  This could lead to client libraries that reduce the coupling that client applications have to server defined resource hierarchies.    
 
